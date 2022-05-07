@@ -1,4 +1,4 @@
-import 'package:dspot_test/dspot_test.dart';
+import 'package:dspot_test/diagonal_difference.dart';
 import 'package:test/test.dart';
 
 void main() {
