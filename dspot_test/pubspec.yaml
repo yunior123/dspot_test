@@ -6,7 +6,9 @@ version: 1.0.0
 environment:
   sdk: '>=2.16.2 <3.0.0'
 
-
+dependencies:
+ 
+  collection: ^1.16.0
 # dependencies:
 #   path: ^1.8.0
 
