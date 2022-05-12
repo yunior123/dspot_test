@@ -28,7 +28,7 @@ class FriendModel {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'imageUrl': imageUrl});
+    result.addAll({'img': imageUrl});
     result.addAll({'id': id});
     result.addAll({'status': status});
     result.addAll({'first_name': firstName});

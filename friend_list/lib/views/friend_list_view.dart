@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:friend_list/view_models/friend_list_page_view_model.dart';
+import 'package:friend_list/view_models/friend_list_view_model.dart';
 import 'package:get/get.dart';
 
 import '../models/friend_model.dart';
+import '../widgets/image_component.dart';
 
-class FriendListPage extends StatelessWidget {
-  const FriendListPage({Key? key}) : super(key: key);
+class FriendListView extends StatelessWidget {
+  static const route = "friend_list/";
+  const FriendListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,27 +21,23 @@ class FriendListPage extends StatelessWidget {
         builder:
             (BuildContext context, AsyncSnapshot<List<FriendModel>> snapshot) {
           if (!snapshot.hasData) {
-            return const CircularProgressIndicator.adaptive();
+            return const Center(child: CircularProgressIndicator.adaptive());
           }
           final friendList = snapshot.data!;
 
           return ListView.builder(
             itemCount: friendList.length,
             itemBuilder: (BuildContext context, int index) {
-              final friendData = friendList[index];
-              final fullName = friendData.firstName + " " + friendData.lastName;
+              final model = friendList[index];
+              final fullName = model.firstName + " " + model.lastName;
               return Card(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // SizedBox(
-                    //   width: 200,
-                    //   height: 200,
-                    //   child: CachedNetworkImage(
-                    //     imageUrl: friendData.imageUrl,
-                    //   ),
-                    // ),
+                    ImageComponent(
+                      imageUrl: model.imageUrl,
+                    ),
                     Expanded(
                       child: Column(
                         children: [
@@ -47,7 +45,7 @@ class FriendListPage extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          Text(friendData.status),
+                          Text(model.status),
                         ],
                       ),
                     ),
@@ -71,7 +69,12 @@ class FriendListPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        viewModel.onDetailsButtonPressed(
+                          context,
+                          model.id,
+                        );
+                      },
                     ),
                   ],
                 ),
