@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:friend_list/services/dependency_injection.dart';
-import 'package:friend_list/views/friend_list_view.dart';
 
+import 'services/dependency_injection.dart';
 import 'services/route_services.dart';
+import 'views/friend_list_view.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({final Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     DependencyInjection.injectDependencies();
     return MaterialApp(
       debugShowCheckedModeBanner: false,

@@ -30,10 +30,10 @@ class FrindDetailsModel {
     required this.available,
   });
 
-  factory FrindDetailsModel.fromJson(String source) =>
+  factory FrindDetailsModel.fromJson(final String source) =>
       FrindDetailsModel.fromMap(json.decode(source));
 
-  factory FrindDetailsModel.fromMap(Map<String, dynamic> map) {
+  factory FrindDetailsModel.fromMap(final Map<String, dynamic> map) {
     return FrindDetailsModel(
       id: map['id']?.toInt() ?? 0,
       img: map['img'] ?? '',
