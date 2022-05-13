@@ -14,7 +14,7 @@ class FriendModel {
     required this.available,
   });
 
-  factory FriendModel.fromMap(Map<String, dynamic> map) {
+  factory FriendModel.fromMap(final Map<String, dynamic> map) {
     return FriendModel(
       imageUrl: map['img'] ?? '',
       id: map['id'] ?? '',

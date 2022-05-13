@@ -5,19 +5,22 @@ class ImageComponent extends StatelessWidget {
   final String imageUrl;
   final Size? size;
   const ImageComponent({
-    Key? key,
+    final Key? key,
     required this.imageUrl,
     this.size,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     //TODO check why image has error
     return SizedBox(
       width: size?.width ?? 60,
       height: size?.height ?? 60,
-      child: CachedNetworkImage(
-        imageUrl: "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(4.0),
+        child: CachedNetworkImage(
+          imageUrl: "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+        ),
       ),
     );
   }

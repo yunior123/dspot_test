@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:friend_list/services/friends_api.dart';
-import 'package:friend_list/views/args/friend_details_args.dart';
-import 'package:friend_list/views/friend_details_view.dart';
 import 'package:get/get.dart';
 
 import '../models/friend_model.dart';
+import '../services/friends_api.dart';
+import '../views/args/friend_details_args.dart';
+import '../views/friend_details_view.dart';
 
 class FriendListViewModel {
   final friendsApiService = Get.find<FriendsApi>();
@@ -24,7 +24,10 @@ class FriendListViewModel {
     return <FriendModel>[];
   }
 
-  Future<void> onDetailsButtonPressed(BuildContext context, int id) async {
+  Future<void> onDetailsButtonPressed(
+    final BuildContext context,
+    final int id,
+  ) async {
     await Navigator.of(context).pushNamed(
       FriendDetailsView.route,
       arguments: FriendDetailsArgs(id),
